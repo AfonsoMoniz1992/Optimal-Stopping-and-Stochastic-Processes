@@ -1,3 +1,4 @@
+
 r"""Simulate an Ornstein–Uhlenbeck process using the Euler–Maruyama scheme.
 
 The Ornstein–Uhlenbeck SDE is
@@ -14,9 +15,13 @@ whose Euler–Maruyama discretization for step size \(\Delta t\) reads
 
 The script generates a single sample path.
 """
+=======
+
+
 
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 # --- Model parameters -----------------------------------------------------
 t_0 = 0.0       # initial time
@@ -39,6 +44,8 @@ noise = np.random.normal(                    # Brownian increments \Delta B
     loc=0.0, scale=np.sqrt(dt), size=length
 )
 
+=======
+
 # --- Euler–Maruyama integration ------------------------------------------
 for i in range(1, length):
     y[i] = (
@@ -53,3 +60,4 @@ plt.xlabel("Time")
 plt.ylabel("X(t)")
 plt.title("Ornstein–Uhlenbeck sample path (Euler–Maruyama)")
 plt.show()
+
