@@ -1,21 +1,28 @@
-"""
-Exemplo Plotly Offline
+r"""Offline Plotly example plotting the function :math:`\sin(x)` on
+\([0, \pi]\).
 
+Demonstrates how to build an interactive figure with Plotly's offline
+mode.
 """
 
 import numpy as np
-import plotly as py
 import plotly.offline as pyo
 import plotly.graph_objs as go
-import ipywidgets as widgets
 
-from scipy import special
-
+# Activate offline mode (useful in Jupyter notebooks)
 pyo.init_notebook_mode()
 
+# Sample points and compute \sin(x)
+x = np.linspace(0, np.pi, 1000)
+y = np.sin(x)
 
-x=np.linspace(0,np.pi,1000)
-layout=go.Layout(title='Simple Example',yaxis=dict(title='volts'),xaxis=dict(title='nanoseconds'))
-trace1=go.Scatter(x=x,y=np.sin(x),mode='lines',name='sin(x)',line=dict(shape='spline')) 
-fig=go.Figure(data=[trace1], layout=layout)
+# Build the figure
+title = "Simple Example"
+layout = go.Layout(
+    title=title, yaxis=dict(title="volts"), xaxis=dict(title="nanoseconds")
+)
+trace = go.Scatter(x=x, y=y, mode="lines", name="sin(x)", line=dict(shape="spline"))
+fig = go.Figure(data=[trace], layout=layout)
+
+# Display the plot
 pyo.iplot(fig)
