@@ -11,6 +11,10 @@ This repository collects short Python scripts that demonstrate how to simulate a
   - `exemplo_plotly.py` – shows how to plot interactively with Plotly.
   - `allen-cahn_pde.py` – placeholder for future experiments with the Allen–Cahn partial differential equation.
 
+  - `poisson_process.py` – generates a homogeneous Poisson counting process.
+  - `cox_ingersoll_ross.py` – simulates the Cox–Ingersoll–Ross interest rate model.
+
+
 ## Common Stochastic Processes
 
 ### Brownian Motion
@@ -30,6 +34,20 @@ A mean‑reverting process that solves
 
 The script `euler_maruyama_v2.py` shows how to simulate it with the Euler–Maruyama scheme.
 
+
+### Poisson Process
+Counts the number of random arrivals over time.  It has stationary, independent
+increments and is fully determined by its rate \(\lambda\).  The script
+`poisson_process.py` draws exponential waiting times to build a sample path.
+
+### Cox–Ingersoll–Ross Process
+An interest rate model satisfying
+
+\[ dR_t = \kappa(\theta - R_t)dt + \sigma \sqrt{R_t} dB_t. \]
+
+The example `cox_ingersoll_ross.py` simulates this mean-reverting square-root
+diffusion via Euler–Maruyama.
+
 ### Euler–Maruyama Method
 A simple numerical integrator for SDEs.  Given a model
 
@@ -48,7 +66,7 @@ Each script is self‑contained and can be executed directly, for example:
 python demo_code/euler_maruyama.py
 python demo_code/euler_maruyama_v2.py
 python demo_code/geometric_brownian_motion_sullivan.py
-```
+
 
 The scripts produce plots using Matplotlib (and Plotly in `exemplo_plotly.py`).  In a headless environment you may need to set an appropriate Matplotlib backend, e.g. `MPLBACKEND=Agg`, to save plots instead of showing them interactively.
 
