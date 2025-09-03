@@ -1,76 +1,86 @@
-'''
-Geometric Brownian Motion: Simulating Stock Price Dynamics by John Sullivan
-https://jtsulliv.github.io/stock-movement/
+r"""
+Geometric Brownian motion example based on John Sullivan's tutorial.
 
-'''
+We generate Brownian motion increments and simulate the exact solution to the
+stochastic differential equation
 
+\[
+    dS_t = \mu S_t\, dt + \sigma S_t\, dB_t,
+\]
 
-''' Necessary Packages'''
+whose closed form is
+
+\[
+    S_t = S_0 \exp\left((\mu - \tfrac{1}{2}\sigma^2)t + \sigma B_t\right).
+\]
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-''' Clear '''
-plt.close('all');
-
-
+# Ensure deterministic output and clear previous figures
+plt.close("all")
 seed = 1
-N = 1000  # increments
+N = 1000  # number of increments
 
+def brownian(seed: int, N: int):
+    """Generate Brownian increments and path.
 
-def Brownian(seed, N):
+    Parameters
+    ----------
+    seed : int
+        Random seed for reproducibility.
+    N : int
+        Number of increments.
+
+    Returns
+    -------
+    W : np.ndarray
+        Brownian path.
+    b : np.ndarray
+        Increments \(\Delta B\).
+    dt : float
+        Time step size.
+    """
     np.random.seed(seed)
-    dt = 1. / N  # time step
-    b = np.random.normal(0., 1., int(N)) * np.sqrt(dt)  # brownian increments
-    W = np.cumsum(b)  # brownian path
+    dt = 1.0 / N
+    b = np.random.normal(0.0, 1.0, N) * np.sqrt(dt)
+    W = np.cumsum(b)
     return W, b, dt
 
+# Brownian motion and increments
+W, b, dt = brownian(seed, N)
+W = np.insert(W, 0, 0.0)  # start at 0
 
-# brownian increments
-b = Brownian(seed, N)[1]
-
-# brownian motion
-W = Brownian(seed, N)[0]
-W = np.insert(W, 0, 0.)
-
-
-# brownian increments
-plt.rcParams['figure.figsize'] = (10,8)
+# Plot Brownian increments
+plt.rcParams["figure.figsize"] = (10, 8)
 xb = np.linspace(0, len(b), len(b))
 plt.plot(xb, b)
-plt.title('Brownian Increments')
+plt.title("Brownian increments \u0394B")
 plt.show()
 
-
-# Standard Brownian Motion
+# Plot Brownian path
 xw = np.linspace(0, len(W), len(W))
 plt.plot(xw, W)
-plt.title('Standard Brownian Motion')
+plt.title("Standard Brownian motion B_t")
+plt.show()
 
-
-
-# GBM Exact Solution
-
-def GBM(So, mu, sigma, W, T, N):    
-    t = np.linspace(0.,1.,N+1)
-    S = []
-    S.append(So)
-    for i in range(1,int(N+1)):
+def GBM(S0, mu, sigma, W, T, N):
+    """Exact solution for geometric Brownian motion."""
+    t = np.linspace(0.0, 1.0, N + 1)
+    S = [S0]
+    for i in range(1, N + 1):
         drift = (mu - 0.5 * sigma**2) * t[i]
-        diffusion = sigma * W[i-1]
-        S_temp = So*np.exp(drift + diffusion)
-        S.append(S_temp)
-    return S, t
+        diffusion = sigma * W[i - 1]
+        S.append(S0 * np.exp(drift + diffusion))
+    return np.array(S), t
 
-So = 55.25 #initial stock price
-mu = 0.15 #returns (drift coefficient)
-sigma = 0.4 #volatility (diffusion coefficient)
-W = Brownian(seed, N)[0] #brownian motion
-T = N+1
+S0 = 55.25  # initial stock price
+mu = 0.15   # drift coefficient
+sigma = 0.4 # volatility
+solution, t = GBM(S0, mu, sigma, W, N + 1, N)
 
-
-soln = GBM(So, mu, sigma, W, T, N)[0]    # Exact solution
-t = GBM(So, mu, sigma, W, T, N)[1]       # time increments for  plotting
-
-plt.plot(t, soln)
-plt.ylabel('Stock Price, $')
-plt.title('Geometric Brownian Motion')
+plt.plot(t, solution)
+plt.ylabel("Stock Price ($)")
+plt.title("Geometric Brownian Motion")
+plt.show()
