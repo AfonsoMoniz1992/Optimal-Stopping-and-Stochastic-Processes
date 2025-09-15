@@ -10,10 +10,7 @@ This repository collects short Python scripts that demonstrate how to simulate a
   - `geometric_brownian_motion_sullivan.py` – steps through Brownian increments, Brownian motion, and a geometric Brownian motion stock model.
   - `exemplo_plotly.py` – shows how to plot interactively with Plotly.
   - `allen-cahn_pde.py` – placeholder for future experiments with the Allen–Cahn partial differential equation.
-  - `poisson_process.py` – generates a homogeneous Poisson counting process.
-  - `cox_ingersoll_ross.py` – simulates the Cox–Ingersoll–Ross interest rate model.
-  - `jump_to_default.py` – simulates a geometric Brownian motion that jumps to
-    zero at a random default time.
+
 
 ## Common Stochastic Processes
 
@@ -34,6 +31,7 @@ A mean‑reverting process that solves
 
 The script `euler_maruyama_v2.py` shows how to simulate it with the Euler–Maruyama scheme.
 
+
 ### Poisson Process
 Counts the number of random arrivals over time.  It has stationary, independent
 increments and is fully determined by its rate \(\lambda\).  The script
@@ -47,17 +45,6 @@ An interest rate model satisfying
 The example `cox_ingersoll_ross.py` simulates this mean-reverting square-root
 diffusion via Euler–Maruyama.
 
-### Jump-to-Default Process
-A simple credit-risk model in which a risky asset follows geometric Brownian
-motion until a random default time governed by an independent Poisson process.
-The dynamics are
-
-\[
-    dS_t = \mu S_t\,dt + \sigma S_t\,dB_t - S_{t-}\,dN_t,
-\]
-
-where \(N_t\) has intensity \(\lambda\).  When \(N_t\) jumps the asset becomes
-worthless and remains at zero.  See `jump_to_default.py` for a sample path.
 
 ### Euler–Maruyama Method
 A simple numerical integrator for SDEs.  Given a model
@@ -77,10 +64,7 @@ Each script is self‑contained and can be executed directly, for example:
 python demo_code/euler_maruyama.py
 python demo_code/euler_maruyama_v2.py
 python demo_code/geometric_brownian_motion_sullivan.py
-python demo_code/poisson_process.py
-python demo_code/cox_ingersoll_ross.py
-python demo_code/jump_to_default.py
-```
+
 
 The scripts produce plots using Matplotlib (and Plotly in `exemplo_plotly.py`).  In a headless environment you may need to set an appropriate Matplotlib backend, e.g. `MPLBACKEND=Agg`, to save plots instead of showing them interactively.
 
