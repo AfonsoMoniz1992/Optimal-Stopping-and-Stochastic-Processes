@@ -11,9 +11,6 @@ This repository collects short Python scripts that demonstrate how to simulate a
   - `exemplo_plotly.py` – shows how to plot interactively with Plotly.
   - `allen-cahn_pde.py` – placeholder for future experiments with the Allen–Cahn partial differential equation.
 
-  - `poisson_process.py` – generates a homogeneous Poisson counting process.
-  - `cox_ingersoll_ross.py` – simulates the Cox–Ingersoll–Ross interest rate model.
-
 
 ## Common Stochastic Processes
 
@@ -47,6 +44,7 @@ An interest rate model satisfying
 
 The example `cox_ingersoll_ross.py` simulates this mean-reverting square-root
 diffusion via Euler–Maruyama.
+
 
 ### Euler–Maruyama Method
 A simple numerical integrator for SDEs.  Given a model

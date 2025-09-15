@@ -15,8 +15,6 @@ whose Euler–Maruyama discretization for step size \(\Delta t\) reads
 
 The script generates a single sample path.
 """
-=======
-
 
 
 import numpy as np
@@ -44,7 +42,6 @@ noise = np.random.normal(                    # Brownian increments \Delta B
     loc=0.0, scale=np.sqrt(dt), size=length
 )
 
-=======
 
 # --- Euler–Maruyama integration ------------------------------------------
 for i in range(1, length):
