@@ -16,6 +16,12 @@ Euler–Maruyama discretization with step size \(\Delta t\) is
 
 This implementation uses the approximation above and clips negative values that
 may arise from discretization error.
+
+Seminal reference
+-----------------
+Cox, J. C., Ingersoll, J. E. & Ross, S. A. (1985). "A Theory of the Term
+Structure of Interest Rates." Econometrica, 53(2), 385–407.
+https://doi.org/10.2307/1911242
 """
 
 import numpy as np

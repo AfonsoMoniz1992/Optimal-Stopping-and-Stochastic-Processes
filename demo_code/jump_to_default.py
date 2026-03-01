@@ -16,6 +16,22 @@ where
 
 When \(N_t\) jumps, the asset is worthless and remains at zero thereafter.
 This script simulates such a path and marks the default time.
+
+Seminal references
+------------------
+Merton, R. C. (1974). "On the Pricing of Corporate Debt: The Risk Structure
+of Interest Rates." Journal of Finance, 29(2), 449–470.
+https://doi.org/10.1111/j.1540-6261.1974.tb03058.x
+(Structural default model; GBM with an absorbing barrier.)
+
+Jarrow, R. A. & Turnbull, S. M. (1995). "Pricing Derivatives on Financial
+Securities Subject to Credit Risk." Journal of Finance, 50(1), 53–85.
+https://doi.org/10.1111/j.1540-6261.1995.tb05167.x
+(Reduced-form / intensity-based default framework.)
+
+Duffie, D. & Singleton, K. J. (1999). "Modeling Term Structures of
+Defaultable Bonds." Review of Financial Studies, 12(4), 687–720.
+https://doi.org/10.1093/rfs/12.4.687
 """
 
 import numpy as np

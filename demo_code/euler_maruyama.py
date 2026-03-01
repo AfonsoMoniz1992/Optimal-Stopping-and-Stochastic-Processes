@@ -20,6 +20,15 @@ The Euler–Maruyama discretization for step size \(\Delta t\) is
 \]
 
 This script simulates both paths for comparison.
+
+Seminal reference
+-----------------
+Maruyama, G. (1955). "Continuous Markov processes and stochastic equations."
+Rendiconti del Circolo Matematico di Palermo, 4(1), 48–90.
+https://doi.org/10.1007/BF02846028
+
+The Euler half of the method originates in classical ODE numerics:
+Euler, L. (1768). *Institutionum Calculi Integralis*, Vol. 1.
 """
 
 import numpy as np

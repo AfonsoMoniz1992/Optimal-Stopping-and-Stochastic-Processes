@@ -11,6 +11,15 @@ and
 
 This script generates event times by drawing exponential inter-arrival times and
 plots the resulting step function for the counting process.
+
+Seminal references
+------------------
+Poisson, S. D. (1837). *Recherches sur la probabilité des jugements en matière
+criminelle et en matière civile*. Paris: Bachelier.  (Introduction of the
+distribution.)
+
+Kingman, J. F. C. (1993). *Poisson Processes*. Oxford University Press.
+(Definitive modern treatment.)
 """
 
 import numpy as np

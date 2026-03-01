@@ -13,6 +13,19 @@ whose closed form is
 \[
     S_t = S_0 \exp\left((\mu - \tfrac{1}{2}\sigma^2)t + \sigma B_t\right).
 \]
+
+Seminal references
+------------------
+Bachelier, L. (1900). "Théorie de la spéculation." Annales Scientifiques de
+l'École Normale Supérieure, 17, 21–86.  (First Brownian motion model for
+asset prices.)
+
+Samuelson, P. A. (1965). "Rational Theory of Warrant Pricing." Industrial
+Management Review, 6(2), 13–32.  (First use of GBM for stock prices.)
+
+Black, F. & Scholes, M. (1973). "The Pricing of Options and Corporate
+Liabilities." Journal of Political Economy, 81(3), 637–654.
+https://doi.org/10.1086/260062
 """
 
 import numpy as np

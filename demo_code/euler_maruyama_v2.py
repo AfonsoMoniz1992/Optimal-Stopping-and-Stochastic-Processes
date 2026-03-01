@@ -14,6 +14,12 @@ whose Euler–Maruyama discretization for step size \(\Delta t\) reads
 \]
 
 The script generates a single sample path.
+
+Seminal reference
+-----------------
+Uhlenbeck, G. E. & Ornstein, L. S. (1930). "On the Theory of the Brownian
+Motion." Physical Review, 36(5), 823–841.
+https://doi.org/10.1103/PhysRev.36.823
 """
 
 
